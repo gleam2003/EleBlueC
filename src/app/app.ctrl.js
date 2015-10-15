@@ -5,9 +5,9 @@
 
     AppCtrl.$inject = ['$scope', '$timeout', '$mdSidenav', '$mdUtil', 'logService', 'Auth'];
 
-    function AppCtrl($scope, $timeout, $mdSidenav, $mdUtil, logService, Auth) {
-        $scope.toggleLeft = logService.buildToggler('left');
-        $scope.toggleRight = logService.buildToggler('right');
+    function AppCtrl($scope, togglerService, Auth) {
+        $scope.toggleLeft = togglerService.buildToggler('left');
+        $scope.toggleRight = togglerService.buildToggler('right');
 
         $scope.createUser = function() {
             $scope.message = null;
