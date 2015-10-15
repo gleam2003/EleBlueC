@@ -3,7 +3,7 @@
         .module('EleBlueC')
         .controller('AppCtrl', AppCtrl);
 
-    AppCtrl.$inject = ['$scope', '$timeout', '$mdSidenav', '$mdUtil', 'logService', 'Auth'];
+    AppCtrl.$inject = ['$scope', 'togglerService', 'Auth'];
 
     function AppCtrl($scope, togglerService, Auth) {
         $scope.toggleLeft = togglerService.buildToggler('left');
