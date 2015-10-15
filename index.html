@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>EleBlueC</title>
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src *; style-src 'self' 'unsafe-inline' http://*; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://* https://*">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <link rel="stylesheet" href="lib/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="assets/app.css"/>
+    <link rel="stylesheet" href="assets/material-icons.css"/>
+    <style type="text/css">
+        /**
+        * Hide when Angular is not yet loaded and initialized
+        */
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+</head>
+<body ng-app="EleBlueC">
+<div ng-controller="AppCtrl" layout="column" ng-cloak layout-fill>
+    <section layout="row" flex>
+        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left"
+                    md-is-locked-open="$mdMedia('gt-md')">
+            <md-toolbar class="md-theme-indigo">
+                <header class="nav-header">
+                    <h1 class="md-toolbar-tools">Sidenav Left</h1>
+                </header>
+            </md-toolbar>
+            <md-content layout-padding ng-controller="LeftCtrl">
+                <md-button ng-click="close()" class="md-primary" hide-gt-md>
+                    Close Sidenav Left
+                </md-button>
+                <p hide-md show-gt-md>
+                    This sidenav is locked open on your device. To go back to the default behavior,
+                    narrow your display.
+                </p>
+            </md-content>
+        </md-sidenav>
+        <md-content flex>
+            <div layout="column" layout-fill layout-align="top center">
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <md-button ng-click="toggleLeft()" class="md-icon-button" aria-label="Settings" hide-gt-md>
+                            <md-icon md-font-library="material-icons" class="md-light">menu</md-icon>
+                        </md-button>
+                        <h2 class="md-display-1">
+                            <span>Toolbar</span>
+                        </h2>
+                        <span flex></span>
+                        <md-button ng-click="toggleRight()" class="md-icon-button" aria-label="Settings">
+                            <md-icon md-font-library="material-icons" class="md-light">menu</md-icon>
+                        </md-button>
+                    </div>
+                </md-toolbar>
+                <div>
+                    <form name="createForm">
+                        <md-content layout-padding layout="row" layout-sm="column" layout-fill>
+                            <md-input-container flex>
+                                <label>Email</label>
+                                <input ng-model="user.email" required name="email" type="email">
+
+                                <div ng-messages="createForm.email.$error" ng-show="createForm.email.$touched">
+                                    <div ng-message="required">This is required.</div>
+                                    <div ng-message="email">Not valid email.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container flex>
+                                <label>Password</label>
+                                <input ng-model="user.password" ng-minlength="8" required name="password" type="password">
+
+                                <div ng-messages="createForm.password.$error" ng-show="createForm.password.$touched">
+                                    <div ng-message="required">This is required.</div>
+                                    <div ng-message="minlength">This is short.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container flex>
+                                <label>Retype Password</label>
+                                <input ng-model="user.repassword" ng-minlength="8" required name="repassword" type="password">
+
+                                <div ng-messages="createForm.repassword.$error" ng-show="createForm.repassword.$touched">
+                                    <div ng-message="required">This is required.</div>
+                                    <div ng-message="minlength">This is short.</div>
+                                </div>
+                            </md-input-container>
+                        </md-content>
+                        <md-button ng-click="createUser()" class="md-raised" aria-label="Create" ng-disabled="createForm.$invalid">Create User</md-button>
+                    </form>
+
+                    <form name="loginForm">
+                        <md-content layout-padding layout="row" layout-sm="column" layout-fill>
+                            <md-input-container flex>
+                                <label>Email</label>
+                                <input ng-model="user.email" required name="email" type="email">
+
+                                <div ng-messages="loginForm.email.$error" ng-show="loginForm.email.$touched">
+                                    <div ng-message="required">This is required.</div>
+                                    <div ng-message="email">Not valid email.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container flex>
+                                <label>Password</label>
+                                <input ng-model="user.password" ng-minlength="8" required name="password" type="password">
+
+                                <div ng-messages="loginForm.password.$error" ng-show="loginForm.password.$touched">
+                                    <div ng-message="required">This is required.</div>
+                                    <div ng-message="minlength">This is short.</div>
+                                </div>
+                            </md-input-container>
+                        </md-content>
+                        <md-button ng-click="loginWithPassword()" class="md-raised" aria-label="Create" ng-disabled="loginForm.$invalid">Login With Password</md-button>
+                    </form>
+                    <br><br>
+
+                    <p ng-if="message">Message: <strong>{{ message }}</strong></p>
+
+                    <p ng-if="error">Error: <strong>{{ error }}</strong></p>
+                </div>
+                <md-button ng-click="login()" class="md-raised" aria-label="LoginAnonimus" ng-if="!authData">Login Anonymously</md-button>
+                <md-button ng-click="unauth()" class="md-raised" aria-label="Logout" ng-if="authData">Logout</md-button>
+                <p ng-if="authData">
+                    Uid: <strong>{{ authData.uid }}</strong><br />
+                    Provider: <strong>{{ authData.provider }}</strong><br />
+                    Auth: <strong>{{ authData.auth }}</strong><br />
+                    Expires: <strong>{{ authData.expires  | date }}</strong><br />
+                    Password: <strong>{{ authData.password }}</strong><br />
+                    Email: <strong>{{ authData.password.email }}</strong><br />
+                    is Temporary Password: <strong>{{ authData.password.isTemporaryPassword }}</strong><br />
+                    Gravatar: <strong>{{ authData.password.profileImageURL}}</strong><br />
+                </p>
+                <p ng-if="error">Error: <strong>{{ error }}</strong></p>
+                <div ng-view>
+
+                </div>
+            </div>
+            <div flex></div>
+        </md-content>
+        <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+            <md-toolbar class="md-theme-light">
+                <h1 class="md-toolbar-tools">Sidenav Right</h1>
+            </md-toolbar>
+            <md-content ng-controller="RightCtrl" layout-padding>
+                <md-button ng-click="close()" class="md-primary">
+                    Close Sidenav Right
+                </md-button>
+            </md-content>
+        </md-sidenav>
+    </section>
+</div>
+
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular/angular-messages.js"></script>
+<script src="lib/angular/angular-animate.js"></script>
+<script src="lib/angular/angular-aria.js"></script>
+<script src="lib/angular/angular-resource.js"></script>
+<script src="lib/angular/angular-cookies.js"></script>
+<script src="lib/angular/angular-sanitize.js"></script>
+<script src="lib/angular/angular-route.js"></script>
+
+<script src="lib/angular-translate/angular-translate.js"></script>
+<script src="lib/angular-translate/angular-translate-loader-static-files.js"></script>
+<script src="lib/angular-material/angular-material.js"></script>
+
+<script src="lib/ngcordova/ng-cordova.js"></script>
+
+<script src="lib/firebase/firebase.js"></script>
+<script src="lib/angular-fire/angularfire.js"></script>
+
+<script src="http://maps.google.com/maps/api/js"></script>
+<script src="lib/angular-maps/ng-map.min.js"></script>
+
+<script src="src/EleBlueC.js"></script>
+<script src="src/data/logservice.js"></script>
+<script src="src/data/factory.js"></script>
+<script src="src/app/app.ctrl.js"></script>
+<script src="src/app/left.ctrl.js"></script>
+<script src="src/app/right.ctrl.js"></script>
+
+<script type="text/javascript" src="cordova.js"></script>
+
+</body>
+</html>
