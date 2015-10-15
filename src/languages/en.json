@@ -4,5 +4,17 @@
   "true": "true",
   "false": "false",
   "required": "required",
-  "send": "send"
+  "send": "send",
+  "submit": "submit",
+  "email": "email",
+  "not_valid_email": "not valid email",
+  "password": "password",
+  "retype_password": "retype password",
+  "short_password": "short password",
+  "this_is_required": "this is required",
+  "login": "login",
+  "logout": "logout"
+
+
+
 }

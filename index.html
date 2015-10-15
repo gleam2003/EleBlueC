@@ -61,30 +61,30 @@
                     <form name="createForm">
                         <md-content layout-padding layout="row" layout-sm="column" layout-fill>
                             <md-input-container flex>
-                                <label>Email</label>
+                                <label>{{'email' | translate}}</label>
                                 <input ng-model="user.email" required name="email" type="email">
 
                                 <div ng-messages="createForm.email.$error" ng-show="createForm.email.$touched">
-                                    <div ng-message="required">This is required.</div>
-                                    <div ng-message="email">Not valid email.</div>
+                                    <div ng-message="required">{{'this_is_required' | translate}}</div>
+                                    <div ng-message="email">{{'not_valid_email' | translate}}</div>
                                 </div>
                             </md-input-container>
                             <md-input-container flex>
-                                <label>Password</label>
+                                <label>{{'password' | translate}}</label>
                                 <input ng-model="user.password" ng-minlength="8" required name="password" type="password">
 
                                 <div ng-messages="createForm.password.$error" ng-show="createForm.password.$touched">
-                                    <div ng-message="required">This is required.</div>
-                                    <div ng-message="minlength">This is short.</div>
+                                    <div ng-message="required">{{'this_is_required' | translate}}</div>
+                                    <div ng-message="minlength">{{'short_password' | translate}}</div>
                                 </div>
                             </md-input-container>
                             <md-input-container flex>
-                                <label>Retype Password</label>
+                                <label>{{'retype_password' | translate}}</label>
                                 <input ng-model="user.repassword" ng-minlength="8" required name="repassword" type="password">
 
                                 <div ng-messages="createForm.repassword.$error" ng-show="createForm.repassword.$touched">
-                                    <div ng-message="required">This is required.</div>
-                                    <div ng-message="minlength">This is short.</div>
+                                    <div ng-message="required">{{'this_is_required' | translate}}</div>
+                                    <div ng-message="minlength">{{'short_password' | translate}}</div>
                                 </div>
                             </md-input-container>
                         </md-content>
@@ -94,25 +94,27 @@
                     <form name="loginForm">
                         <md-content layout-padding layout="row" layout-sm="column" layout-fill>
                             <md-input-container flex>
-                                <label>Email</label>
+                                <label>{{'email' | translate}}</label>
                                 <input ng-model="user.email" required name="email" type="email">
 
                                 <div ng-messages="loginForm.email.$error" ng-show="loginForm.email.$touched">
-                                    <div ng-message="required">This is required.</div>
-                                    <div ng-message="email">Not valid email.</div>
+                                    <div ng-message="required">{{'this_is_required' | translate}}</div>
+                                    <div ng-message="email">{{'not_valid_email' | translate}}</div>
                                 </div>
                             </md-input-container>
                             <md-input-container flex>
-                                <label>Password</label>
+                                <label>{{'password' | translate}}</label>
                                 <input ng-model="user.password" ng-minlength="8" required name="password" type="password">
 
                                 <div ng-messages="loginForm.password.$error" ng-show="loginForm.password.$touched">
-                                    <div ng-message="required">This is required.</div>
-                                    <div ng-message="minlength">This is short.</div>
+                                    <div ng-message="required">{{'this_is_required' | translate}}</div>
+                                    <div ng-message="minlength">{{'short_password' | translate}}</div>
                                 </div>
                             </md-input-container>
                         </md-content>
-                        <md-button ng-click="loginWithPassword()" class="md-raised" aria-label="Create" ng-disabled="loginForm.$invalid">Login With Password</md-button>
+                        <md-button ng-click="loginWithPassword()" class="md-raised" aria-label="Create"
+                                   ng-disabled="loginForm.$invalid">{{'login' | translate}}
+                        </md-button>
                     </form>
                     <br><br>
 
@@ -120,8 +122,12 @@
 
                     <p ng-if="error">Error: <strong>{{ error }}</strong></p>
                 </div>
-                <md-button ng-click="login()" class="md-raised" aria-label="LoginAnonimus" ng-if="!authData">Login Anonymously</md-button>
-                <md-button ng-click="unauth()" class="md-raised" aria-label="Logout" ng-if="authData">Logout</md-button>
+                <md-button ng-click="login()" class="md-raised" aria-label="LoginAnonimus" ng-if="!authData">{{'login' |
+                    translate}}
+                </md-button>
+                <md-button ng-click="unauth()" class="md-raised" aria-label="Logout" ng-if="authData">{{'logout' |
+                    translate}}
+                </md-button>
                 <p ng-if="authData">
                     Uid: <strong>{{ authData.uid }}</strong><br />
                     Provider: <strong>{{ authData.provider }}</strong><br />
@@ -174,10 +180,10 @@
 <script src="lib/angular-maps/ng-map.min.js"></script>
 
 <script src="src/EleBlueC.js"></script>
-<script src="src/data/togglerservice.js"></script>
-<script src="src/data/authfactory.js"></script>
-<script src="src/data/translateconfig.js"></script>
-<script src="src/data/themingconfig.js"></script>
+<script src="src/data/service-toggler.js"></script>
+<script src="src/data/factory-auth.js"></script>
+<script src="src/data/config-translate.js"></script>
+<script src="src/data/config-theming.js"></script>
 <script src="src/app/app.ctrl.js"></script>
 <script src="src/app/left.ctrl.js"></script>
 <script src="src/app/right.ctrl.js"></script>

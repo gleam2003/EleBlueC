@@ -1,8 +1,20 @@
 {
-  "yes": "Si",
-  "no": "No",
+  "yes": "si",
+  "no": "no",
   "true": "vero",
   "false": "falso",
   "required": "richiesto",
-  "send": "invia"
+  "send": "spedisci",
+  "submit": "invia",
+  "email": "email",
+  "not_valid_email": "email non valida",
+  "password": "password",
+  "retype_password": "reinserisci password",
+  "short_password": "password troppo corta",
+  "this_is_required": "campo obbligatorio",
+  "login": "login",
+  "logout": "logout"
+
+
+
 }

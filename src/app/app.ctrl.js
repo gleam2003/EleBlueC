@@ -3,9 +3,9 @@
         .module('EleBlueC')
         .controller('AppCtrl', AppCtrl);
 
-    AppCtrl.$inject = ['$scope', 'togglerService', 'Auth'];
+    AppCtrl.$inject = ['$scope', 'togglerService', 'Auth', '$translate'];
 
-    function AppCtrl($scope, togglerService, Auth) {
+    function AppCtrl($scope, togglerService, Auth, $translate) {
         $scope.toggleLeft = togglerService.buildToggler('left');
         $scope.toggleRight = togglerService.buildToggler('right');
 
