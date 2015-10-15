@@ -1,7 +1,7 @@
 # EleBlueC
 Cordova Angular Material Firebase Start App
 
-Plugin (install with "cordova plugin add"):
+Plugin needed:
 cordova-plugin-battery-status
 cordova-plugin-console
 cordova-plugin-network-information
