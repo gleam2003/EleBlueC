@@ -13,6 +13,7 @@
                 suffix: '.json'
             });
             $translateProvider.preferredLanguage('it');
+            $translateProvider.useSanitizeValueStrategy('sanitize');
         });
 
 
