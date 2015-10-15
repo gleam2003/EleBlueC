@@ -4,11 +4,11 @@
 (function () {
     'use strict';
 
-    angular.module('c3aApp')
+    angular.module('EleBlueC')
         .config(function ($routeProvider) {
             $routeProvider
                 .when('/', {
-                    templateUrl: 'app/home/home.html',
+                    templateUrl: 'src/app/home/home.html',
                     controller: 'HomeCtrl',
                     controllerAs: 'vm'
                 })

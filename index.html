@@ -128,16 +128,6 @@
                 <md-button ng-click="unauth()" class="md-raised" aria-label="Logout" ng-if="authData">{{'logout' |
                     translate}}
                 </md-button>
-                <p ng-if="authData">
-                    Uid: <strong>{{ authData.uid }}</strong><br />
-                    Provider: <strong>{{ authData.provider }}</strong><br />
-                    Auth: <strong>{{ authData.auth }}</strong><br />
-                    Expires: <strong>{{ authData.expires  | date }}</strong><br />
-                    Password: <strong>{{ authData.password }}</strong><br />
-                    Email: <strong>{{ authData.password.email }}</strong><br />
-                    is Temporary Password: <strong>{{ authData.password.isTemporaryPassword }}</strong><br />
-                    Gravatar: <strong>{{ authData.password.profileImageURL}}</strong><br />
-                </p>
                 <p ng-if="error">Error: <strong>{{ error }}</strong></p>
                 <div ng-view>
 
@@ -190,6 +180,7 @@
 <script src="src/app/app.ctrl.js"></script>
 <script src="src/app/left.ctrl.js"></script>
 <script src="src/app/right.ctrl.js"></script>
+<script src="src/app/home/home.ctrl.js"></script>
 
 <script type="text/javascript" src="cordova.js"></script>
 
