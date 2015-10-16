@@ -1,0 +1,17 @@
+<md-toolbar class="md-theme-light">
+    <h1 class="md-toolbar-tools">UTENTE</h1>
+</md-toolbar>
+<md-content ng-controller="RightCtrl" layout-padding>
+
+    <md-list>
+        <md-list-item>
+            <div class="md-list-item-text" ng-if="authData.provider === 'anonymous'">
+                <p><a ng-href="#login">{{'login' | translate}}</a></p>
+            </div>
+        </md-list-item>
+    </md-list>
+
+    <md-button ng-click="close()" class="md-primary">
+        Close Sidenav Right
+    </md-button>
+</md-content>
