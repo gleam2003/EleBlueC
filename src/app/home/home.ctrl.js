@@ -14,5 +14,8 @@
         $scope.auth.$onAuth(function (authData) {
             $scope.authData = authData;
         });
+
+
+        $scope.auth
     }
 })()
