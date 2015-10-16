@@ -25,21 +25,8 @@
 <div ng-controller="AppCtrl" layout="column" ng-cloak layout-fill>
     <section layout="row" flex>
         <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left"
-                    md-is-locked-open="$mdMedia('gt-md')">
-            <md-toolbar class="md-theme-indigo">
-                <header class="nav-header">
-                    <h1 class="md-toolbar-tools">Sidenav Left</h1>
-                </header>
-            </md-toolbar>
-            <md-content layout-padding ng-controller="LeftCtrl">
-                <md-button ng-click="close()" class="md-primary" hide-gt-md>
-                    Close Sidenav Left
-                </md-button>
-                <p hide-md show-gt-md>
-                    This sidenav is locked open on your device. To go back to the default behavior,
-                    narrow your display.
-                </p>
-            </md-content>
+                    md-is-locked-open="$mdMedia('gt-md')"
+                    ng-include="'src/app/left.html'">
         </md-sidenav>
         <md-content flex>
             <div layout="column" layout-fill layout-align="top center">
@@ -122,10 +109,8 @@
 
                     <p ng-if="error">Error: <strong>{{ error }}</strong></p>
                 </div>
-                <md-button ng-click="login()" class="md-raised" aria-label="LoginAnonimus" ng-if="!authData">{{'login' |
-                    translate}}
-                </md-button>
-                <md-button ng-click="unauth()" class="md-raised" aria-label="Logout" ng-if="authData">{{'logout' |
+                <md-button ng-click="unauth()" class="md-raised" aria-label="Logout"
+                           ng-if="authData.provider === 'password'">{{'logout' |
                     translate}}
                 </md-button>
                 <p ng-if="error">Error: <strong>{{ error }}</strong></p>
@@ -135,15 +120,7 @@
             </div>
             <div flex></div>
         </md-content>
-        <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
-            <md-toolbar class="md-theme-light">
-                <h1 class="md-toolbar-tools">Sidenav Right</h1>
-            </md-toolbar>
-            <md-content ng-controller="RightCtrl" layout-padding>
-                <md-button ng-click="close()" class="md-primary">
-                    Close Sidenav Right
-                </md-button>
-            </md-content>
+        <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right" ng-include="'src/app/right.html'">
         </md-sidenav>
     </section>
 </div>

@@ -29,7 +29,7 @@
             $scope.authData = authData;
         });
 
-        $scope.login = function() {
+        if ($scope.auth.provider === undefined) {
             $scope.authData = null;
             $scope.error = null;
 
@@ -38,7 +38,7 @@
             }).catch(function (error) {
                 $scope.error = error;
             });
-        };
+        }
 
         $scope.loginWithPassword = function() {
             $scope.authData = null;
@@ -54,7 +54,18 @@
             });
         };
 
-        $scope.unauth =function(){ $scope.auth.$unauth(); $scope.authData = null;};
+        $scope.unauth = function () {
+            $scope.auth.$unauth();
+            $scope.authData = null;
+            $scope.error = null;
+
+            $scope.auth.$authAnonymously().then(function (authData) {
+                $scope.authData = authData;
+            }).catch(function (error) {
+                $scope.error = error;
+            });
+
+        };
 
     };
 })()	
