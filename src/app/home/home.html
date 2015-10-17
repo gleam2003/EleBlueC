@@ -1,12 +1,23 @@
-<p ng-if="authData">
-    Uid: <strong>{{ authData.uid }}</strong><br/>
-    Provider: <strong>{{ authData.provider }}</strong><br/>
-    Expires seconds: <strong>{{ authData.expires*1000 | date:'MMM dd yyyy - HH:mm:ss'}}</strong><br/>
-    Email: <strong>{{ authData.password.email }}</strong><br/>
-    is Temporary Password: <strong>{{ authData.password.isTemporaryPassword }}</strong><br/>
-    Gravatar: <strong>{{ authData.password.profileImageURL}}</strong><br/>
-</p>
-<md-button ng-click="unauth()" class="md-raised" aria-label="Logout"
-           ng-if="authData.provider === 'password'">{{'logout' |
-    translate}}
-</md-button>
+<md-content layout-align="top center" layout-fill ng-hide="loading">
+    <div layout="column" layout-sm="column" layout-align="center center" layout-padding ng-if="authData">
+        <div flex>
+            Uid: <strong>{{ authData.uid }}</strong><br/>
+            Provider: <strong>{{ authData.provider }}</strong><br/>
+            Expires seconds: <strong>{{ authData.expires*1000 | date:'MMM dd yyyy - HH:mm:ss'}}</strong><br/>
+            Email: <strong>{{ authData.password.email }}</strong><br/>
+            is Temporary Password: <strong>{{ authData.password.isTemporaryPassword }}</strong><br/>
+        </div>
+        <div flex ng-if="!authData.password.profileImageURL == ''">
+            <img ng-src="{{ authData.password.profileImageURL }}" class="face">
+        </div>
+        <div flex>
+            <md-button ng-click="unauth()" class="md-raised" aria-label="Logout"
+                       ng-if="authData.provider === 'password'">{{'logout' |
+                translate}}
+            </md-button>
+        </div>
+    </div>
+</md-content>
+<md-content layout="column" layout-align="center center" layout-fill ng-show="loading" ng-cloak>
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</md-content>

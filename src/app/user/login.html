@@ -21,11 +21,11 @@
             </md-input-container>
         </div>
         <div layout="row" layout-align="center center" layout-padding>
-            <md-button ng-click="loginWithPassword()" class="md-raised" aria-label="Login"
+            <md-button ng-click="loginWithPassword()" class="md-raised groupX left" aria-label="Login"
                        ng-disabled="loginForm.$invalid">
                 {{'login' | translate}}
             </md-button>
-            <md-button ng-click="send($event, '/create')" class="md-raised" aria-label="Create">
+            <md-button ng-click="send($event, '/create')" class="md-raised md-primary groupX right" aria-label="Create">
                 {{'create' | translate}}
             </md-button>
         </div>
