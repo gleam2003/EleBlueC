@@ -30,5 +30,10 @@
             });
         };
 
+        $scope.send = function (event, i) {
+            event.preventDefault();
+            $location.path(i);
+        };
+
     };
 })()	

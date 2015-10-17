@@ -22,9 +22,9 @@
     <md-button ng-click="loginWithPassword()" class="md-raised" aria-label="Login"
                ng-disabled="loginForm.$invalid">{{'login' | translate}}
     </md-button>
-    <a href="#create">{{ 'registered' | translate }}</a>
+    <md-button ng-click="send($event, '/create')" class="md-raised" aria-label="Create">{{'create' | translate}}
+    </md-button>
 </form>
-
 <p ng-if="message">Message: <strong>{{ message }}</strong></p>
 
 <p ng-if="error">Error: <strong>{{ error.code | translate }}</strong></p>
