@@ -18,5 +18,7 @@
   "EMAIL_TAKEN": "email già registrata",
   "INVALID_PASSWORD": "password errata",
   "INVALID_USER": "email non registrata",
-  "INVALID_EMAIL": "email non valida"
+  "INVALID_EMAIL": "email non valida",
+  "name": "nome",
+  "suername": "cognome"
 }

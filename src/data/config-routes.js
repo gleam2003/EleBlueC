@@ -13,12 +13,12 @@
                     controllerAs: 'vm'
                 })
                 .when('/login', {
-                    templateUrl: 'src/app/login/login.html',
+                    templateUrl: 'src/app/user/login.html',
                     controller: 'LoginCtrl',
                     controllerAs: 'vm'
                 })
                 .when('/create', {
-                    templateUrl: 'src/app/login/create.html',
+                    templateUrl: 'src/app/user/create.html',
                     controller: 'CreateCtrl',
                     controllerAs: 'vm'
                 })

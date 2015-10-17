@@ -44,9 +44,10 @@
                         </md-button>
                     </div>
                 </md-toolbar>
-                <div>
-                    <br><br>
+                <md-content layout layout-fill ng-view>
 
+                </md-content>
+                <div>
                     <p ng-if="message">Message: <strong>{{ message }}</strong></p>
 
                     <p ng-if="error">Error: <strong>{{ error }}</strong></p>
@@ -56,9 +57,6 @@
                     translate}}
                 </md-button>
                 <p ng-if="error">Error: <strong>{{ error }}</strong></p>
-                <div ng-view>
-
-                </div>
             </div>
             <div flex></div>
         </md-content>
@@ -103,8 +101,8 @@
 <script src="src/app/left.ctrl.js"></script>
 <script src="src/app/right.ctrl.js"></script>
 <script src="src/app/home/home.ctrl.js"></script>
-<script src="src/app/login/login.ctrl.js"></script>
-<script src="src/app/login/create.ctrl.js"></script>
+<script src="src/app/user/login.ctrl.js"></script>
+<script src="src/app/user/create.ctrl.js"></script>
 
 <script type="text/javascript" src="cordova.js"></script>
 

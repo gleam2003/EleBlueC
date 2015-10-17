@@ -19,4 +19,6 @@
   "INVALID_PASSWORD": "wrong password",
   "INVALID_USER": "email not registered",
   "INVALID_EMAIL": "not valid email"
+  "name": "name",
+  "suername": "suername"
 }
