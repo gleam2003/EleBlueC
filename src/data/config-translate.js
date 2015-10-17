@@ -14,6 +14,8 @@
             });
             $translateProvider.preferredLanguage('it');
             $translateProvider.useSanitizeValueStrategy('escape');
+            // Tell the module to store the language in the local storage
+            $translateProvider.useLocalStorage();
         });
 
 

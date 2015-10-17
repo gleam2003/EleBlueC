@@ -1,6 +1,7 @@
 (function () {
     angular
         .module('EleBlueC', [
+            'ngCookies',
             'ngResource',
             'ngSanitize',
             'ngRoute',
