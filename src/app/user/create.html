@@ -1,0 +1,69 @@
+<div layout="column" layout-fill ng-cloak>
+    <md-content layout-padding>
+        <form name="createForm">
+            <div layout="row" layout-sm="column" layout-padding>
+                <md-input-container flex>
+                    <label>{{ 'email' | translate}}</label>
+                    <input ng-model="user.email" type="email" required>
+
+                    <div ng-messages="createForm.email.$error" ng-show="createForm.email.$touched">
+                        <div ng-message="required">{{'this_is_required' | translate}}</div>
+                        <div ng-message="email">{{'not_valid_email' | translate}}</div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>{{'password' | translate}}</label>
+                    <input ng-model="user.password" ng-minlength="8" required name="password" type="password">
+
+                    <div ng-messages="createForm.password.$error" ng-show="createForm.password.$touched">
+                        <div ng-message="required">{{'this_is_required' | translate}}</div>
+                        <div ng-message="minlength">{{'short_password' | translate}}</div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>{{'retype_password' | translate}}</label>
+                    <input ng-model="user.repassword" ng-minlength="8" required name="repassword" type="password">
+
+                    <div ng-messages="createForm.repassword.$error" ng-show="createForm.repassword.$touched">
+                        <div ng-message="required">{{'this_is_required' | translate}}</div>
+                        <div ng-message="minlength">{{'short_password' | translate}}</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout="row" layout-sm="column" layout-padding>
+                <md-input-container flex>
+                    <label>{{'name' | translate}}</label>
+                    <input ng-model="user.name" required name="name" type="name">
+
+                    <div ng-messages="createForm.name.$error" ng-show="createForm.name.$touched">
+                        <div ng-message="required">{{'this_is_required' | translate}}</div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>{{'suername' | translate}}</label>
+                    <input ng-model="user.suername" required name="suername" type="suername">
+
+                    <div ng-messages="createForm.suername.$error" ng-show="createForm.suername.$touched">
+                        <div ng-message="required">{{'this_is_required' | translate}}</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout="column" layout-align="space-around center" layout-padding>
+                <md-input-container flex>
+                    <md-button ng-click="createUser()" class="md-raised" aria-label="Create"
+                               ng-disabled="createForm.$invalid">Create
+                        User
+                    </md-button>
+                </md-input-container>
+            </div>
+            <div layout="column" layout-align="space-around center" layout-padding>
+                <div flex>
+                    <p ng-if="message">Message: <strong>{{ message }}</strong></p>
+
+                    <p ng-if="error">Error: <strong>{{ error.code | translate }}</strong></p>
+                </div>
+            </div>
+        </form>
+    </md-content>
+</div>
+

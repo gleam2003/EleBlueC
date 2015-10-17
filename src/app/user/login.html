@@ -1,0 +1,42 @@
+<div layout="column" layout-fill ng-cloak>
+    <md-content layout-padding>
+        <form name="loginForm">
+            <div layout="row" layout-sm="column" layout-padding>
+                <md-input-container flex>
+                    <label>{{'email' | translate}}</label>
+                    <input ng-model="user.email" required name="email" type="email">
+
+                    <div ng-messages="loginForm.email.$error" ng-show="loginForm.email.$touched">
+                        <div ng-message="required">{{'this_is_required' | translate}}</div>
+                        <div ng-message="email">{{'not_valid_email' | translate}}</div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>{{'password' | translate}}</label>
+                    <input ng-model="user.password" ng-minlength="8" required name="password" type="password">
+
+                    <div ng-messages="loginForm.password.$error" ng-show="loginForm.password.$touched">
+                        <div ng-message="required">{{'this_is_required' | translate}}</div>
+                        <div ng-message="minlength">{{'short_password' | translate}}</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout="row" layout-align="center center" layout-padding>
+                <md-button ng-click="loginWithPassword()" class="md-raised" aria-label="Login"
+                           ng-disabled="loginForm.$invalid">
+                    {{'login' | translate}}
+                </md-button>
+                <md-button ng-click="send($event, '/create')" class="md-raised" aria-label="Create">
+                    {{'create' | translate}}
+                </md-button>
+            </div>
+            <div layout="column" layout-align="space-around center" layout-padding>
+                <div flex>
+                    <p ng-if="message">Message: <strong>{{ message }}</strong></p>
+
+                    <p ng-if="error">Error: <strong>{{ error.code | translate }}</strong></p>
+                </div>
+            </div>
+        </form>
+    </md-content>
+</div>
