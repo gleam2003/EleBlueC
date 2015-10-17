@@ -22,47 +22,35 @@
     </style>
 </head>
 <body ng-app="EleBlueC">
-<div ng-controller="AppCtrl" layout="column" ng-cloak layout-fill>
-    <section layout="row" flex>
-        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left"
-                    md-is-locked-open="$mdMedia('gt-md')"
-                    ng-include="'src/app/left.html'">
-        </md-sidenav>
-        <md-content flex>
-            <div layout="column" layout-fill layout-align="top center">
-                <md-toolbar>
-                    <div class="md-toolbar-tools">
-                        <md-button ng-click="toggleLeft()" class="md-icon-button" aria-label="Settings" hide-gt-md>
-                            <md-icon md-font-library="material-icons" class="md-light">menu</md-icon>
-                        </md-button>
-                        <h2 class="md-display-1">
-                            <span>Toolbar</span>
-                        </h2>
-                        <span flex></span>
-                        <md-button ng-click="toggleRight()" class="md-icon-button" aria-label="Settings">
-                            <md-icon md-font-library="material-icons" class="md-light">menu</md-icon>
-                        </md-button>
-                    </div>
-                </md-toolbar>
-                <div layout layout-fill ng-view>
-
-                </div>
-                <div>
-                    <p ng-if="message">Message: <strong>{{ message }}</strong></p>
-
-                    <p ng-if="error">Error: <strong>{{ error }}</strong></p>
-                </div>
-                <md-button ng-click="unauth()" class="md-raised" aria-label="Logout"
-                           ng-if="authData.provider === 'password'">{{'logout' |
-                    translate}}
+<div ng-controller="AppCtrl" layout="row" ng-cloak layout-fill>
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2"
+                md-component-id="left"
+                md-is-locked-open="$mdMedia('gt-md')"
+                ng-include="'src/app/left.html'">
+    </md-sidenav>
+    <md-content layout-fill>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <md-button ng-click="toggleLeft()" class="md-icon-button" aria-label="Settings" hide-gt-md>
+                    <md-icon md-font-library="material-icons" class="md-light">menu</md-icon>
                 </md-button>
-                <p ng-if="error">Error: <strong>{{ error }}</strong></p>
+                <h2 class="md-display-1">
+                    <span>Toolbar</span>
+                </h2>
+                <span flex></span>
+                <md-button ng-click="toggleRight()" class="md-icon-button" aria-label="Settings">
+                    <md-icon md-font-library="material-icons" class="md-light">menu</md-icon>
+                </md-button>
             </div>
-            <div flex></div>
+        </md-toolbar>
+        <md-content layout-align="top center" layout-fill ng-view>
+
         </md-content>
-        <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right" ng-include="'src/app/right.html'">
-        </md-sidenav>
-    </section>
+    </md-content>
+    <md-sidenav class="md-sidenav-right md-whiteframe-z2"
+                md-component-id="right"
+                ng-include="'src/app/right.html'">
+    </md-sidenav>
 </div>
 
 <script src="lib/angular/angular.js"></script>

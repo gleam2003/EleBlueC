@@ -6,3 +6,7 @@
     is Temporary Password: <strong>{{ authData.password.isTemporaryPassword }}</strong><br/>
     Gravatar: <strong>{{ authData.password.profileImageURL}}</strong><br/>
 </p>
+<md-button ng-click="unauth()" class="md-raised" aria-label="Logout"
+           ng-if="authData.provider === 'password'">{{'logout' |
+    translate}}
+</md-button>

@@ -8,8 +8,10 @@
     function LoginCtrl($scope, togglerService, Auth, $translate, $location) {
         $scope.toggleLeft = togglerService.buildToggler('left');
         $scope.toggleRight = togglerService.buildToggler('right');
+        $scope.loading = false;
 
         $scope.loginWithPassword = function () {
+            $scope.loading = true;
             $scope.authData = null;
             $scope.error = null;
 
@@ -27,6 +29,7 @@
                 $location.path("/");
             }).catch(function (error) {
                 $scope.error = error;
+                $scope.loading = false;
             });
         };
 

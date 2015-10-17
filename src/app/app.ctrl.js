@@ -26,20 +26,6 @@
             });
         }
 
-        $scope.loginWithPassword = function() {
-            $scope.authData = null;
-            $scope.error = null;
-
-            $scope.auth.$authWithPassword({
-                email: $scope.user.email,
-                password: $scope.user.password
-            }).then(function (authData) {
-                $scope.authData = authData;
-            }).catch(function (error) {
-                $scope.error = error;
-            });
-        };
-
         $scope.unauth = function () {
             $scope.auth.$unauth();
             $scope.authData = null;
@@ -51,20 +37,6 @@
                 $scope.error = error;
             });
 
-        };
-
-        $scope.createUser = function () {
-            $scope.message = null;
-            $scope.error = null;
-
-            Auth.$createUser({
-                email: $scope.user.email,
-                password: $scope.user.password
-            }).then(function (userData) {
-                $scope.message = "User created with uid: " + userData.uid;
-            }).catch(function (error) {
-                $scope.error = error;
-            });
         };
 
     };
