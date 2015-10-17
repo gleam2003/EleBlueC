@@ -13,5 +13,10 @@
   "short_password": "short password",
   "this_is_required": "this is required",
   "login": "login",
-  "logout": "logout"
+  "logout": "logout",
+  "registered": "registered"
+  "EMAIL_TAKEN": "Already registered email",
+  "INVALID_PASSWORD": "wrong password",
+  "INVALID_USER": "email not registered",
+  "INVALID_EMAIL": "not valid email"
 }

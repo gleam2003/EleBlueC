@@ -12,6 +12,16 @@
                     controller: 'HomeCtrl',
                     controllerAs: 'vm'
                 })
+                .when('/login', {
+                    templateUrl: 'src/app/login/login.html',
+                    controller: 'LoginCtrl',
+                    controllerAs: 'vm'
+                })
+                .when('/create', {
+                    templateUrl: 'src/app/login/create.html',
+                    controller: 'CreateCtrl',
+                    controllerAs: 'vm'
+                })
                 .otherwise({
                     redirectTo: '/'
                 });

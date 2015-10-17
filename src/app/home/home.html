@@ -1,9 +1,7 @@
 <p ng-if="authData">
     Uid: <strong>{{ authData.uid }}</strong><br/>
     Provider: <strong>{{ authData.provider }}</strong><br/>
-    Auth: <strong>{{ authData.auth }}</strong><br/>
     Expires seconds: <strong>{{ authData.expires*1000 | date:'MMM dd yyyy - HH:mm:ss'}}</strong><br/>
-    Password: <strong>{{ authData.password }}</strong><br/>
     Email: <strong>{{ authData.password.email }}</strong><br/>
     is Temporary Password: <strong>{{ authData.password.isTemporaryPassword }}</strong><br/>
     Gravatar: <strong>{{ authData.password.profileImageURL}}</strong><br/>

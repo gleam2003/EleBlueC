@@ -45,64 +45,6 @@
                     </div>
                 </md-toolbar>
                 <div>
-                    <form name="createForm">
-                        <md-content layout-padding layout="row" layout-sm="column" layout-fill>
-                            <md-input-container flex>
-                                <label>{{'email' | translate}}</label>
-                                <input ng-model="user.email" required name="email" type="email">
-
-                                <div ng-messages="createForm.email.$error" ng-show="createForm.email.$touched">
-                                    <div ng-message="required">{{'this_is_required' | translate}}</div>
-                                    <div ng-message="email">{{'not_valid_email' | translate}}</div>
-                                </div>
-                            </md-input-container>
-                            <md-input-container flex>
-                                <label>{{'password' | translate}}</label>
-                                <input ng-model="user.password" ng-minlength="8" required name="password" type="password">
-
-                                <div ng-messages="createForm.password.$error" ng-show="createForm.password.$touched">
-                                    <div ng-message="required">{{'this_is_required' | translate}}</div>
-                                    <div ng-message="minlength">{{'short_password' | translate}}</div>
-                                </div>
-                            </md-input-container>
-                            <md-input-container flex>
-                                <label>{{'retype_password' | translate}}</label>
-                                <input ng-model="user.repassword" ng-minlength="8" required name="repassword" type="password">
-
-                                <div ng-messages="createForm.repassword.$error" ng-show="createForm.repassword.$touched">
-                                    <div ng-message="required">{{'this_is_required' | translate}}</div>
-                                    <div ng-message="minlength">{{'short_password' | translate}}</div>
-                                </div>
-                            </md-input-container>
-                        </md-content>
-                        <md-button ng-click="createUser()" class="md-raised" aria-label="Create" ng-disabled="createForm.$invalid">Create User</md-button>
-                    </form>
-
-                    <form name="loginForm">
-                        <md-content layout-padding layout="row" layout-sm="column" layout-fill>
-                            <md-input-container flex>
-                                <label>{{'email' | translate}}</label>
-                                <input ng-model="user.email" required name="email" type="email">
-
-                                <div ng-messages="loginForm.email.$error" ng-show="loginForm.email.$touched">
-                                    <div ng-message="required">{{'this_is_required' | translate}}</div>
-                                    <div ng-message="email">{{'not_valid_email' | translate}}</div>
-                                </div>
-                            </md-input-container>
-                            <md-input-container flex>
-                                <label>{{'password' | translate}}</label>
-                                <input ng-model="user.password" ng-minlength="8" required name="password" type="password">
-
-                                <div ng-messages="loginForm.password.$error" ng-show="loginForm.password.$touched">
-                                    <div ng-message="required">{{'this_is_required' | translate}}</div>
-                                    <div ng-message="minlength">{{'short_password' | translate}}</div>
-                                </div>
-                            </md-input-container>
-                        </md-content>
-                        <md-button ng-click="loginWithPassword()" class="md-raised" aria-label="Create"
-                                   ng-disabled="loginForm.$invalid">{{'login' | translate}}
-                        </md-button>
-                    </form>
                     <br><br>
 
                     <p ng-if="message">Message: <strong>{{ message }}</strong></p>
@@ -158,6 +100,8 @@
 <script src="src/app/left.ctrl.js"></script>
 <script src="src/app/right.ctrl.js"></script>
 <script src="src/app/home/home.ctrl.js"></script>
+<script src="src/app/login/login.ctrl.js"></script>
+<script src="src/app/login/create.ctrl.js"></script>
 
 <script type="text/javascript" src="cordova.js"></script>
 

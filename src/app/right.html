@@ -6,7 +6,7 @@
     <md-list>
         <md-list-item>
             <div class="md-list-item-text" ng-if="authData.provider === 'anonymous'">
-                <p><a ng-href="#login">{{'login' | translate}}</a></p>
+                <p><a ng-href="#login" ng-click="close()">{{'login' | translate}}</a></p>
             </div>
         </md-list-item>
     </md-list>
