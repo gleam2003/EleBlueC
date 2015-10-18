@@ -14,6 +14,7 @@
         $scope.auth.$onAuth(function (authData) {
             $scope.authData = authData;
         });
+
         $scope.unauth = function () {
             $scope.loading = true;
             $scope.auth.$unauth();

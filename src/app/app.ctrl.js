@@ -15,10 +15,9 @@
         // any time auth status updates, add the user data to scope
         $scope.auth.$onAuth(function(authData) {
             $scope.authData = authData;
-            localStorage.setItem('authData', JSON.stringify(authData));
         });
 
-        if (!localStorage.getItem('authData')) {
+        if (!localStorage.getItem('firebase:session::elebluec')) {
 
             $scope.loading = true;
             $scope.error = null;

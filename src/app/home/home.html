@@ -6,6 +6,10 @@
             <p>Expires seconds: <strong>{{ authData.expires*1000 | date:'MMM dd yyyy - HH:mm:ss'}}</strong></p>
             <p>Email: <strong>{{ authData.password.email }}</strong><br/>
             <p>is Temporary Password: <strong>{{ authData.password.isTemporaryPassword }}</strong></p>
+
+            <p>First Name: {{ authData.fireuser.firstname }}</p>
+
+            <p>Last Name: {{ authData.fireuser.lastname }}</p>
         </div>
         <div flex ng-if="!authData.password.profileImageURL == ''">
             <img ng-src="{{ authData.password.profileImageURL }}&s=150" class="face">

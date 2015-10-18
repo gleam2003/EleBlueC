@@ -53,13 +53,6 @@
                 User
             </md-button>
         </div>
-        <div layout="column" layout-align="space-around center" layout-padding>
-            <div flex>
-                <p ng-if="message">Message: <strong>{{ message }}</strong></p>
-
-                <p ng-if="error">Error: <strong>{{ error.code | translate }}</strong></p>
-            </div>
-        </div>
     </form>
 </md-content>
 <md-content layout="column" layout-align="center center" layout-fill ng-show="loading" ng-cloak>

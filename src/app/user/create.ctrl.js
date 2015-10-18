@@ -3,9 +3,9 @@
         .module('EleBlueC')
         .controller('CreateCtrl', CreateCtrl);
 
-    CreateCtrl.$inject = ['$scope', 'togglerService', 'Auth', '$translate'];
+    CreateCtrl.$inject = ['$scope', 'togglerService', 'Auth', '$translate', '$location'];
 
-    function CreateCtrl($scope, togglerService, Auth, $translate) {
+    function CreateCtrl($scope, togglerService, Auth, $translate, $location) {
         $scope.toggleLeft = togglerService.buildToggler('left');
         $scope.toggleRight = togglerService.buildToggler('right');
         $scope.loading = false;
@@ -26,7 +26,17 @@
                 password: $scope.user.password
             }).then(function (userData) {
                 $scope.message = "User created with uid: " + userData.uid;
-                $scope.loading = false;
+                $scope.auth.$authWithPassword({
+                    email: $scope.user.email,
+                    password: $scope.user.password
+                }).then(function (authData) {
+                    $scope.authData = authData;
+                    $location.path("/");
+                }).catch(function (error) {
+                    $scope.error = error;
+                    $scope.loading = false;
+                    showAlert(error);
+                });
             }).catch(function (error) {
                 $scope.error = error;
                 $scope.loading = false;
