@@ -2,17 +2,13 @@
 <div layout="column" layout-align="center center" layout-padding>
         <div flex>
             <p>Uid: <strong>{{ authData.uid }}</strong></p>
-
             <p>Provider: <strong>{{ authData.provider }}</strong></p>
-
             <p>Expires seconds: <strong>{{ authData.expires*1000 | date:'MMM dd yyyy - HH:mm:ss'}}</strong></p>
-
             <p>Email: <strong>{{ authData.password.email }}</strong><br/>
-
             <p>is Temporary Password: <strong>{{ authData.password.isTemporaryPassword }}</strong></p>
         </div>
         <div flex ng-if="!authData.password.profileImageURL == ''">
-            <img ng-src="{{ authData.password.profileImageURL }}&s=150" class="face" imageonload>
+            <img ng-src="{{ authData.password.profileImageURL }}&s=150" class="face">
         </div>
         <div flex>
             <md-button ng-click="unauth()" class="md-raised" aria-label="Logout"

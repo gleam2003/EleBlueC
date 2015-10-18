@@ -18,9 +18,8 @@
             localStorage.setItem('authData', JSON.stringify(authData));
         });
 
-        try {
-            localStorage.getItem('authData');
-        } catch (error) {
+        if (!localStorage.getItem('authData')) {
+
             $scope.loading = true;
             $scope.error = null;
             $scope.auth.$authAnonymously().then(function (authData) {
