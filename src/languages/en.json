@@ -5,6 +5,8 @@
   "false": "false",
   "required": "required",
   "send": "send",
+  "warning": "warning",
+  "close": "close",
   "submit": "submit",
   "email": "email",
   "not_valid_email": "not valid email",

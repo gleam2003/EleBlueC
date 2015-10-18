@@ -5,6 +5,8 @@
   "false": "falso",
   "required": "richiesto",
   "send": "spedisci",
+  "warning": "attenzione",
+  "close": "chiudi",
   "submit": "invia",
   "email": "email",
   "not_valid_email": "email non valida",

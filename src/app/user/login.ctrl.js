@@ -3,11 +3,28 @@
         .module('EleBlueC')
         .controller('LoginCtrl', LoginCtrl);
 
-    LoginCtrl.$inject = ['$scope', 'togglerService', 'Auth', '$translate', '$location'];
+    LoginCtrl.$inject = ['$scope', 'togglerService', 'Auth', '$translate', '$location', '$mdDialog', '$filter'];
 
-    function LoginCtrl($scope, togglerService, Auth, $translate, $location) {
+    function LoginCtrl($scope, togglerService, Auth, $translate, $location, $mdDialog, $filter) {
         $scope.toggleLeft = togglerService.buildToggler('left');
         $scope.toggleRight = togglerService.buildToggler('right');
+
+        function showAlert(error) {
+
+            alert = $mdDialog.alert({
+                title: $filter('translate')('warning'),
+                content: $filter('translate')(error.code),
+                ok: $filter('translate')('close')
+            });
+
+            $mdDialog
+                .show(alert)
+                .finally(function () {
+                    alert = undefined;
+                });
+        }
+
+
         $scope.loading = false;
 
         $scope.loginWithPassword = function () {
@@ -30,6 +47,7 @@
             }).catch(function (error) {
                 $scope.error = error;
                 $scope.loading = false;
+                showAlert(error);
             });
         };
 
