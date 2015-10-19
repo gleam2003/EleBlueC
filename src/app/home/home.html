@@ -1,27 +1,24 @@
-<md-content layout-align="top center" layout-fill ng-hide="loading"">
+<md-content layout-align="top center" ng-hide="loading"">
 <div layout="column" layout-align="center center" layout-padding>
-        <div flex>
-            <p>Uid: <strong>{{ authData.uid }}</strong></p>
-            <p>Provider: <strong>{{ authData.provider }}</strong></p>
-            <p>Expires seconds: <strong>{{ authData.expires*1000 | date:'MMM dd yyyy - HH:mm:ss'}}</strong></p>
-            <p>Email: <strong>{{ authData.password.email }}</strong><br/>
-            <p>is Temporary Password: <strong>{{ authData.password.isTemporaryPassword }}</strong></p>
-
-            <p>First Name: {{ authData.fireuser.firstname }}</p>
-
-            <p>Last Name: {{ authData.fireuser.lastname }}</p>
-        </div>
-        <div flex ng-if="!authData.password.profileImageURL == ''">
-            <img ng-src="{{ authData.password.profileImageURL }}&s=150" class="face">
-        </div>
-        <div flex>
-            <md-button ng-click="unauth()" class="md-raised" aria-label="Logout"
-                       ng-if="authData.provider === 'password'">{{'logout' |
-                translate}}
-            </md-button>
-        </div>
+    <div class="ng-cloak" ng-hide="AuthService.isLoggedIn()" flex>
+        Hi stranger!
     </div>
+    <div class="ng-cloak" ng-show="AuthService.isLoggedIn()" flex>
+        <p>Uid: <strong>{{ sessionService.getUid() }}</strong></p>
+
+        <p>Provider: <strong>{{ sessionService.getProvider() }}</strong></p>
+
+        <p>Expires seconds: <strong>{{ sessionService.getExpires()*1000 | date:'MMM dd yyyy - HH:mm:ss'}}</strong></p>
+
+        <p>Email: <strong>{{ sessionService.getEmail() }}</strong></p>
+
+        <p>Is Temporary Password: <strong>{{ sessionService.getIsTemporaryPassword() }}</strong></p>
+
+        <p><img ng-src="{{ sessionService.getAvatar() }}&s=150" class="face" ng-if="sessionService.getAvatar()"></p>
+    </div>
+</div>
 </md-content>
+
 <md-content layout="column" layout-align="center center" layout-fill ng-show="loading" ng-cloak>
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
 </md-content>

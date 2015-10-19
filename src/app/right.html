@@ -1,14 +1,23 @@
 <md-toolbar class="md-theme-light">
     <h1 class="md-toolbar-tools">UTENTE</h1>
 </md-toolbar>
-<md-content ng-controller="RightCtrl" layout-padding>
+<md-content ng-controller="RightCtrl">
 
     <md-list>
-        <md-list-item>
-            <div class="md-list-item-text" ng-if="authData.provider === 'anonymous'">
-                <p><a ng-href="#login" ng-click="close()">{{'login' | translate}}</a></p>
-            </div>
+
+        <md-subheader class="md-no-sticky">Impostazioni</md-subheader>
+
+        <md-list-item ng-click="send($event, '/login')" ng-if="sessionService.getProvider() == 'anonymous'">
+            <md-icon md-font-library="material-icons" class="md-avatar-icon">face</md-icon>
+            <p>{{'login' | translate}}</p>
         </md-list-item>
+
+        <md-list-item ng-click="logout($event)" ng-if="sessionService.getProvider() == 'password'">
+            <md-icon md-font-library="material-icons" class="md-avatar-icon">face</md-icon>
+            <p>{{'logout' | translate}}</p>
+        </md-list-item>
+
+        <md-divider></md-divider>
     </md-list>
 
     <md-button ng-click="close()" class="md-primary">

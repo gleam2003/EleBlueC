@@ -28,7 +28,7 @@
                 md-is-locked-open="$mdMedia('gt-md')"
                 ng-include="'src/app/left.html'">
     </md-sidenav>
-    <md-content layout-fill>
+    <md-content layout="column" layout-fill>
         <md-toolbar>
             <div class="md-toolbar-tools">
                 <md-button ng-click="toggleLeft()" class="md-icon-button" aria-label="Settings" hide-gt-md>
@@ -43,9 +43,10 @@
                 </md-button>
             </div>
         </md-toolbar>
-        <md-content layout-align="top center" layout-fill ng-view>
+        <md-content layout-align="top center" flex ng-view>
 
         </md-content>
+
     </md-content>
     <md-sidenav class="md-sidenav-right md-whiteframe-z2"
                 md-component-id="right"
@@ -79,8 +80,10 @@
 
 <script src="src/EleBlueC.js"></script>
 
+<script src="src/data/run-assignservice.js"></script>
 <script src="src/data/service-toggler.js"></script>
-<script src="src/data/factory-auth.js"></script>
+<script src="src/data/service-session.js"></script>
+<script src="src/data/service-auth.js"></script>
 <script src="src/data/config-routes.js"></script>
 <script src="src/data/config-theming.js"></script>
 <script src="src/data/config-translate.js"></script>

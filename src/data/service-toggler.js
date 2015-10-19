@@ -11,7 +11,6 @@
                 $mdSidenav(navID)
                     .toggle()
                     .then(function () {
-                        console.debug("toggle " + navID + " is done");
                     });
             }, 200);
             return debounceFn;

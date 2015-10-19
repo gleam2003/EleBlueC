@@ -12,7 +12,6 @@
             'ngMessages',
             'pascalprecht.translate'])
         .run(function ($rootScope, $cordovaBatteryStatus, $cordovaNetwork) {
-            console.log('Module EleBlueC Run');
             var app = {
                 initialize: function () {
                     this.bindEvents();

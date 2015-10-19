@@ -3,15 +3,9 @@
         .module('EleBlueC')
         .controller('LeftCtrl', LeftCtrl);
 
-    LeftCtrl.$inject = ['$scope', '$timeout', '$mdSidenav', 'Auth', '$translate'];
+    LeftCtrl.$inject = ['$scope', '$timeout', '$mdSidenav', '$translate'];
 
-    function LeftCtrl($scope, $timeout, $mdSidenav, Auth, $translate) {
-
-        $scope.auth = Auth;
-        // any time auth status updates, add the user data to scope
-        $scope.auth.$onAuth(function (authData) {
-            $scope.authData = authData;
-        });
+    function LeftCtrl($scope, $timeout, $mdSidenav, $translate) {
 
         $scope.close = function () {
             $mdSidenav('left').close()

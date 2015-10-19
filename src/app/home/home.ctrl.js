@@ -6,29 +6,9 @@
         .module('EleBlueC')
         .controller('HomeCtrl', HomeCtrl);
 
-    HomeCtrl.$inject = ['$scope', 'Auth', '$translate'];
+    HomeCtrl.$inject = ['$scope', '$translate'];
 
-    function HomeCtrl($scope, Auth, $translate) {
-        $scope.auth = Auth;
-        // any time auth status updates, add the user data to scope
-        $scope.auth.$onAuth(function (authData) {
-            $scope.authData = authData;
-        });
+    function HomeCtrl($scope, $translate) {
 
-        $scope.unauth = function () {
-            $scope.loading = true;
-            $scope.auth.$unauth();
-            $scope.authData = null;
-            $scope.error = null;
-
-            $scope.auth.$authAnonymously().then(function (authData) {
-                $scope.authData = authData;
-                $scope.loading = false;
-            }).catch(function (error) {
-                $scope.error = error;
-                $scope.loading = false;
-            });
-
-        };
     }
 })()
