@@ -3,9 +3,9 @@
         .module('EleBlueC')
         .controller('CreateCtrl', CreateCtrl);
 
-    CreateCtrl.$inject = ['$scope', '$translate', '$location', '$mdDialog', '$filter'];
+    CreateCtrl.$inject = ['$scope', '$translate', '$location', '$mdDialog', '$filter', 'AuthService'];
 
-    function CreateCtrl($scope, $translate, $location, $mdDialog, $filter) {
+    function CreateCtrl($scope, $translate, $location, $mdDialog, $filter, AuthService) {
 
         $scope.loading = false;
 

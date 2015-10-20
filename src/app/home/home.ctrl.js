@@ -6,9 +6,9 @@
         .module('EleBlueC')
         .controller('HomeCtrl', HomeCtrl);
 
-    HomeCtrl.$inject = ['$scope', '$translate'];
+    HomeCtrl.$inject = ['$scope'];
 
-    function HomeCtrl($scope, $translate) {
+    function HomeCtrl($scope) {
 
     }
 })()

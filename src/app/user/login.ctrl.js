@@ -3,9 +3,9 @@
         .module('EleBlueC')
         .controller('LoginCtrl', LoginCtrl);
 
-    LoginCtrl.$inject = ['$scope', '$translate', '$location', '$mdDialog', '$filter', 'AuthService'];
+    LoginCtrl.$inject = ['$scope', '$location', '$mdDialog', '$filter', 'AuthService'];
 
-    function LoginCtrl($scope, $translate, $location, $mdDialog, $filter, AuthService) {
+    function LoginCtrl($scope, $location, $mdDialog, $filter, AuthService) {
 
         $scope.loading = false;
 
@@ -33,5 +33,5 @@
             $location.path(i);
         };
 
-    };
-})()	
+    }
+})();

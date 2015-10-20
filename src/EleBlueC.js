@@ -5,6 +5,7 @@
             'ngResource',
             'ngSanitize',
             'ngRoute',
+            'ngTouch',
             'ngMaterial',
             'ngCordova',
             'ngMap',
