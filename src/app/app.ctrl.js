@@ -9,5 +9,5 @@
         $scope.toggleLeft = togglerService.buildToggler('left');
         $scope.toggleRight = togglerService.buildToggler('right');
 
-    };
-})()	
+    }
+})();

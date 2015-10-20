@@ -3,30 +3,20 @@
         .module('EleBlueC')
         .controller('CreateCtrl', CreateCtrl);
 
-    CreateCtrl.$inject = ['$scope', '$translate', '$location', '$mdDialog', '$filter', 'AuthService'];
+    CreateCtrl.$inject = ['$scope', '$location', 'AuthService'];
 
-    function CreateCtrl($scope, $translate, $location, $mdDialog, $filter, AuthService) {
+    function CreateCtrl($scope, $location, AuthService) {
 
-        $scope.loading = false;
-
-        function showAlert(error) {
-
-            alert = $mdDialog.alert({
-                title: $filter('translate')('warning'),
-                content: $filter('translate')(error.code),
-                ok: $filter('translate')('close')
-            });
-
-            $mdDialog
-                .show(alert)
-                .finally(function () {
-                    alert = undefined;
-                });
-        }
+        var user;
 
         $scope.createUser = function (event) {
             event.preventDefault();
+            user = {
+                email: $scope.user.email,
+                password: $scope.user.password
+            }
+            AuthService.createUser(user);
         };
 
-    };
-})()	
+    }
+})();

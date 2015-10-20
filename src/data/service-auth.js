@@ -15,11 +15,41 @@
         var ref = new Firebase('https://elebluec.firebaseio.com/');
         var authObj = $firebaseAuth(ref);
 
-        this.isLoggedIn = function isLoggedIn() {
-            return sessionService.getAuthData() !== null;
+        this.logInPassword = logInPassword;
+        this.isLoggedIn = isLoggedIn;
+        this.logInAnonymously = logInAnonymously;
+        this.createUser = createUser;
+        this.logOut = logOut;
+
+
+        if (!isLoggedIn()) {
+            logInAnonymously();
+        }
+
+        function showAlert(error) {
+            alert = $mdDialog.alert({
+                title: $filter('translate')('warning'),
+                content: $filter('translate')(error.code),
+                ok: $filter('translate')('close')
+            });
+            $mdDialog
+                .show(alert)
+                .finally(function () {
+                    alert = undefined;
+                });
+        }
+
+        function logOut() {
+            authObj.$unauth();
+            sessionService.destroy();
+            logInAnonymously();
         };
 
-        this.logInAnonymously = function () {
+        function isLoggedIn() {
+            return sessionService.getAuthData() !== null;
+        }
+
+        function logInAnonymously() {
             return authObj
                 .$authAnonymously()
                 .then(
@@ -30,9 +60,9 @@
                     showAlert(error);
                 }
             );
-        };
+        }
 
-        this.logInPassword = function (email, password) {
+        function logInPassword(email, password) {
             return authObj
                 .$authWithPassword({
                     email: email,
@@ -47,29 +77,23 @@
                     showAlert(error);
                 }
             );
-        };
-
-        this.logOut = function () {
-            authObj.$unauth();
-            sessionService.destroy();
-            this.logInAnonymously();
-        };
-
-        if (!this.isLoggedIn()) {
-            this.logInAnonymously();
         }
 
-        function showAlert(error) {
-            alert = $mdDialog.alert({
-                title: $filter('translate')('warning'),
-                content: $filter('translate')(error.code),
-                ok: $filter('translate')('close')
-            });
-            $mdDialog
-                .show(alert)
-                .finally(function () {
-                    alert = undefined;
-                });
+        function createUser(user) {
+            return authObj
+                .$createUser({
+                    email: user.email,
+                    password: user.password
+                })
+                .then(
+                function (authData) {
+                    logInPassword(user.email, user.password);
+                },
+                function (error) {
+                    showAlert(error);
+                }
+            );
+
         }
     }
 

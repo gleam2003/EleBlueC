@@ -1,24 +1,22 @@
-<md-content layout-align="top center" ng-hide="loading"">
-<div layout="column" layout-align="center center" layout-padding>
+<div layout="column" layout-align="center center" layout-padding ng-hide="loading">
     <div class="ng-cloak" ng-hide="AuthService.isLoggedIn()" flex>
         Hi stranger!
     </div>
     <div class="ng-cloak" ng-show="AuthService.isLoggedIn()" flex>
 
-    <p>Uid: <strong>{{ sessionService.getUid() }}</strong></p>
+        <h1>Uid: <strong>{{ sessionService.getUid() }}</strong></h1>
 
-        <p>Provider: <strong>{{ sessionService.getProvider() }}</strong></p>
+        <h2>Provider: <strong>{{ sessionService.getProvider() }}</strong></h2>
 
-        <p>Expires seconds: <strong>{{ sessionService.getExpires()*1000 | date:'MMM dd yyyy - HH:mm:ss'}}</strong></p>
+        <h2>Expires seconds: <strong>{{ sessionService.getExpires()*1000 | date:'MMM dd yyyy - HH:mm:ss'}}</strong></h2>
 
-        <p>Email: <strong>{{ sessionService.getEmail() }}</strong></p>
+        <h2>Email: <strong>{{ sessionService.getEmail() }}</strong></h2>
 
-        <p>Is Temporary Password: <strong>{{ sessionService.getIsTemporaryPassword() }}</strong></p>
+        <h2>Is Temporary Password: <strong>{{ sessionService.getIsTemporaryPassword() }}</strong></h2>
 
         <p><img ng-src="{{ sessionService.getAvatar() }}&s=150" class="face" ng-if="sessionService.getAvatar()"></p>
     </div>
 </div>
-</md-content>
 
 <md-content layout="column" layout-align="center center" layout-fill ng-show="loading" ng-cloak>
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
