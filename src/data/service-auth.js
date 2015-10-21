@@ -26,6 +26,31 @@
             logInAnonymously();
         }
 
+        function createUser(user) {
+            return authObj
+                .$createUser({
+                    email: user.email,
+                    password: user.password
+                })
+                .then(
+                function (authData) {
+                    var users = new Firebase("https://elebluec.firebaseio.com/users/");
+                    var uid = users.child(authData.uid);
+                    var firstname = uid.child('firstname');
+                    firstname.set(user.firstname);
+
+                    var lastname = uid.child('lastname');
+                    lastname.set(user.lastname);
+
+                    logInPassword(user);
+                },
+                function (error) {
+                    showAlert(error);
+                }
+            );
+
+        }
+
         function showAlert(error) {
             alert = $mdDialog.alert({
                 title: $filter('translate')('warning'),
@@ -62,11 +87,11 @@
             );
         }
 
-        function logInPassword(email, password) {
+        function logInPassword(user) {
             return authObj
                 .$authWithPassword({
-                    email: email,
-                    password: password
+                    email: user.email,
+                    password: user.password
                 })
                 .then(
                 function (authData) {
@@ -77,23 +102,6 @@
                     showAlert(error);
                 }
             );
-        }
-
-        function createUser(user) {
-            return authObj
-                .$createUser({
-                    email: user.email,
-                    password: user.password
-                })
-                .then(
-                function (authData) {
-                    logInPassword(user.email, user.password);
-                },
-                function (error) {
-                    showAlert(error);
-                }
-            );
-
         }
     }
 

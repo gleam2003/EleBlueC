@@ -12,7 +12,7 @@
             <p>{{'login' | translate}}</p>
         </md-list-item>
 
-        <md-list-item ng-click="logout($event)" ng-if="sessionService.getProvider() == 'password'">
+        <md-list-item ng-click="send($event, '/logout')" ng-if="sessionService.getProvider() == 'password'">
             <md-icon md-font-library="material-icons" class="md-avatar-icon">face</md-icon>
             <p>{{'logout' | translate}}</p>
         </md-list-item>

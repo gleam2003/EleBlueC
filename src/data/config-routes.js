@@ -17,6 +17,11 @@
                     controller: 'LoginCtrl',
                     controllerAs: 'vm'
                 })
+                .when('/logout', {
+                    templateUrl: 'src/app/user/logout.html',
+                    controller: 'LogoutCtrl',
+                    controllerAs: 'vm'
+                })
                 .when('/create', {
                     templateUrl: 'src/app/user/create.html',
                     controller: 'CreateCtrl',

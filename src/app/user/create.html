@@ -32,17 +32,17 @@
         <div layout="row" layout-sm="column" layout-padding>
             <md-input-container flex>
                 <label>{{'name' | translate}}</label>
-                <input ng-model="user.name" required name="name" type="name">
+                <input ng-model="user.firstname" required name="firstname" type="firstname">
 
-                <div ng-messages="createForm.name.$error" ng-show="createForm.name.$touched">
+                <div ng-messages="createForm.firstname.$error" ng-show="createForm.firstname.$touched">
                     <div ng-message="required">{{'this_is_required' | translate}}</div>
                 </div>
             </md-input-container>
             <md-input-container flex>
-                <label>{{'suername' | translate}}</label>
-                <input ng-model="user.suername" required name="suername" type="suername">
+                <label>{{'lastname' | translate}}</label>
+                <input ng-model="user.lastname" required name="lastname" type="lastname">
 
-                <div ng-messages="createForm.suername.$error" ng-show="createForm.suername.$touched">
+                <div ng-messages="createForm.lastname.$error" ng-show="createForm.lastname.$touched">
                     <div ng-message="required">{{'this_is_required' | translate}}</div>
                 </div>
             </md-input-container>

@@ -14,6 +14,10 @@
 
         <h2>Is Temporary Password: <strong>{{ sessionService.getIsTemporaryPassword() }}</strong></h2>
 
+        <h2>First Name: <strong>{{ firstname.$value }}</strong></h2>
+
+        <h2>Last Name: <strong>{{ lastname.$value }}</strong></h2>
+
         <p><img ng-src="{{ sessionService.getAvatar() }}&s=150" class="face" ng-if="sessionService.getAvatar()"></p>
     </div>
 </div>

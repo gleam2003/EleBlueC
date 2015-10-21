@@ -9,7 +9,7 @@
 
         $scope.loginWithPassword = function (event) {
             event.preventDefault();
-            AuthService.logInPassword($scope.user.email, $scope.user.password);
+            AuthService.logInPassword($scope.user);
 
         };
 

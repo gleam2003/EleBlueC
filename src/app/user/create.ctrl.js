@@ -13,7 +13,9 @@
             event.preventDefault();
             user = {
                 email: $scope.user.email,
-                password: $scope.user.password
+                password: $scope.user.password,
+                firstname: $scope.user.firstname,
+                lastname: $scope.user.lastname
             }
             AuthService.createUser(user);
         };
