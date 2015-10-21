@@ -36,12 +36,10 @@
                 function (authData) {
                     var users = new Firebase("https://elebluec.firebaseio.com/users/");
                     var uid = users.child(authData.uid);
-                    var firstname = uid.child('firstname');
-                    firstname.set(user.firstname);
-
-                    var lastname = uid.child('lastname');
-                    lastname.set(user.lastname);
-
+                    var password = user.password;
+                    delete user.password;
+                    uid.set(user);
+                    user.password = password;
                     logInPassword(user);
                 },
                 function (error) {

@@ -14,9 +14,23 @@
 
         <h2>Is Temporary Password: <strong>{{ sessionService.getIsTemporaryPassword() }}</strong></h2>
 
-        <h2>First Name: <strong>{{ firstname.$value }}</strong></h2>
+        <h2>First Name: <strong>{{ user.firstname }}</strong></h2>
 
-        <h2>Last Name: <strong>{{ lastname.$value }}</strong></h2>
+        <h2>Last Name: <strong>{{ user.lastname }}</strong></h2>
+
+        <h2>City: <strong>{{ user.city }}</strong></h2>
+
+        <h2>State: <strong>{{ user.state }}</strong></h2>
+
+        <h2>Postal Code: <strong>{{ postalCode.$value }}</strong></h2>
+
+        <h2>Device: <strong>{{ user.device }}</strong></h2>
+
+        <h2>Platform: <strong>{{ user.platform }}</strong></h2>
+
+        <h2>Version: <strong>{{ user.version }}</strong></h2>
+
+        <h2>Uuid: <strong>{{ user.uuid }}</strong></h2>
 
         <p><img ng-src="{{ sessionService.getAvatar() }}&s=150" class="face" ng-if="sessionService.getAvatar()"></p>
     </div>
