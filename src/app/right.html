@@ -1,26 +1,30 @@
-<md-toolbar class="md-theme-light">
-    <h1 class="md-toolbar-tools">UTENTE</h1>
-</md-toolbar>
-<md-content ng-controller="RightCtrl">
+<md-content layout="column" layout-fill>
+    <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">UTENTE</h1>
+    </md-toolbar>
 
-    <md-list>
+    <md-content layout-align="top center" ng-controller="RightCtrl" ng-swipe-right="toggleRight()" flex>
+        <div layout="column">
+            <md-list>
+                <md-list-item ng-click="toggleRight();send($event, '/login')" ng-if="sessionService.getProvider() == 'anonymous'">
+                    <md-icon md-font-library="material-icons" class="md-avatar-icon">face</md-icon>
+                    <p>{{'login' | translate}}</p>
+                </md-list-item>
 
-        <md-subheader class="md-no-sticky">Impostazioni</md-subheader>
+                <md-list-item ng-click="toggleRight();send($event, '/logout')" ng-if="sessionService.getProvider() == 'password'">
+                    <md-icon md-font-library="material-icons" class="md-avatar-icon">face</md-icon>
+                    <p>{{'logout' | translate}}</p>
+                </md-list-item>
+                <md-list-item ng-click="toggleRight();send($event, '/settings')" ng-if="sessionService.getProvider() == 'password'">
+                    <md-icon md-font-library="material-icons" class="md-avatar-icon">settings</md-icon>
+                    <p>{{'settings' | translate}}</p>
+                </md-list-item>
+                <md-divider></md-divider>
+            </md-list>
 
-        <md-list-item ng-click="send($event, '/login')" ng-if="sessionService.getProvider() == 'anonymous'">
-            <md-icon md-font-library="material-icons" class="md-avatar-icon">face</md-icon>
-            <p>{{'login' | translate}}</p>
-        </md-list-item>
-
-        <md-list-item ng-click="send($event, '/logout')" ng-if="sessionService.getProvider() == 'password'">
-            <md-icon md-font-library="material-icons" class="md-avatar-icon">face</md-icon>
-            <p>{{'logout' | translate}}</p>
-        </md-list-item>
-
-        <md-divider></md-divider>
-    </md-list>
-
-    <md-button ng-click="close()" class="md-primary">
-        Close Sidenav Right
-    </md-button>
+            <md-button ng-click="toggleRight()" class="md-primary">
+                Close Sidenav Right
+            </md-button>
+        </div>
+    </md-content>
 </md-content>

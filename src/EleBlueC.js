@@ -22,23 +22,6 @@
                 },
                 onDeviceReady: function () {
                     console.log('Device Ready');
-                    console.log($cordovaNetwork.getNetwork());
-                    console.log($cordovaNetwork.isOnline());
-
-                    $rootScope.$on("$cordovaBatteryStatus:status", function (event, status) {
-                        console.log('Battery:' + status.level);
-                        console.log('Is Plugged:' + status.isPlugged);
-                    });
-
-                    $rootScope.$on("$cordovaNetwork:offline", function (event, result) {
-                        console.log('OffLine');
-                        console.log(result);
-                    });
-
-                    $rootScope.$on("$cordovaNetwork:online", function (event, result) {
-                        console.log('OnLine');
-                        console.log(result);
-                    });
                 }
             };
 

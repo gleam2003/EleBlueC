@@ -3,19 +3,12 @@
         .module('EleBlueC')
         .controller('RightCtrl', RightCtrl);
 
-    RightCtrl.$inject = ['$scope', '$timeout', '$mdSidenav', '$location', 'AuthService'];
+    RightCtrl.$inject = ['$scope', '$location', 'AuthService'];
 
-    function RightCtrl($scope, $timeout, $mdSidenav, $location, AuthService) {
-        $scope.close = function () {
-            $mdSidenav('right').close()
-                .then(function () {
-                    console.debug("close RIGHT is done");
-                });
-        };
+    function RightCtrl($scope, $location, AuthService) {
 
         $scope.send = function (event, i) {
             event.preventDefault();
-            $mdSidenav('right').close();
             $location.path(i);
         };
 
@@ -23,5 +16,5 @@
             event.preventDefault();
             AuthService.logOut();
         };
-    };
-})()	
+    }
+})();

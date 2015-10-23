@@ -1,14 +1,20 @@
-<md-toolbar class="md-theme-indigo">
-    <header class="nav-header">
-        <h1 class="md-toolbar-tools">MENU</h1>
-    </header>
-</md-toolbar>
-<md-content layout-padding ng-controller="LeftCtrl">
-    <md-button ng-click="close()" class="md-primary" hide-gt-md>
-        Close Sidenav Left
-    </md-button>
-    <p hide-md show-gt-md>
-        This sidenav is locked open on your device. To go back to the default behavior,
-        narrow your display.
-    </p>
+<md-content layout="column" layout-fill>
+    <md-toolbar class="md-theme-light">
+        <header class="nav-header">
+            <h1 class="md-toolbar-tools">MENU</h1>
+        </header>
+    </md-toolbar>
+
+    <md-content layout-align="top center" ng-controller="LeftCtrl" ng-swipe-left="toggleLeft()" flex>
+        <div layout="column" hide-gt-md>
+            <md-button ng-click="toggleLeft()" class="md-primary">
+                Close Sidenav Left
+            </md-button>
+        </div>
+        <div layout="column">
+            <md-button ng-click="toggleLeft();send($event, '/')" class="md-primary">
+                Home
+            </md-button>
+        </div>
+    </md-content>
 </md-content>

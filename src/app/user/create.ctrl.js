@@ -3,9 +3,11 @@
         .module('EleBlueC')
         .controller('CreateCtrl', CreateCtrl);
 
-    CreateCtrl.$inject = ['$scope', '$location', 'AuthService', '$cordovaDevice'];
+    CreateCtrl.$inject = ['$scope', '$location', 'AuthService', '$cordovaDevice','logService','position'];
 
-    function CreateCtrl($scope, $location, AuthService, $cordovaDevice) {
+    function CreateCtrl($scope, $location, AuthService, $cordovaDevice,logService,position) {
+
+        logService.setPosition(position);
 
         var user;
         var device = $cordovaDevice.getDevice();
@@ -20,10 +22,7 @@
                 city: $scope.user.city,
                 state: $scope.user.state,
                 postalCode: $scope.user.postalCode,
-                device: device.cordova,
-                platform: device.platform,
-                version: device.version,
-                uuid: device.uuid
+                device: device,
             }
             AuthService.createUser(user);
         };

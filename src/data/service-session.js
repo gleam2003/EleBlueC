@@ -9,9 +9,9 @@
         .service('sessionService', sessionService);
 
     // Inject dependencies
-    sessionService.$inject = ['$log'];
+    sessionService.$inject = [];
 
-    function sessionService($log) {
+    function sessionService() {
 
         this._authData = JSON.parse(localStorage.getItem('sessionService.authData'));
 

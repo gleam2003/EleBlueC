@@ -3,17 +3,13 @@
         .module('EleBlueC')
         .controller('LeftCtrl', LeftCtrl);
 
-    LeftCtrl.$inject = ['$scope', '$timeout', '$mdSidenav', '$translate'];
+    LeftCtrl.$inject = ['$scope', '$location'];
 
-    function LeftCtrl($scope, $timeout, $mdSidenav, $translate) {
+    function LeftCtrl($scope, $location) {
 
-        $scope.close = function () {
-            $mdSidenav('left').close()
-                .then(function () {
-                    console.debug("close LEFT is done");
-                });
+        $scope.send = function (event, i) {
+            event.preventDefault();
+            $location.path(i);
         };
-
-
-    };
-})()	
+    }
+})();

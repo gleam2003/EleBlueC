@@ -7,6 +7,5 @@
 
     function LogoutCtrl($scope, $location, AuthService) {
         AuthService.logOut();
-        $location.path('/');
-    };
-})()	
+    }
+})();

@@ -1,3 +1,19 @@
+(function () {
+
+    // Export
+    angular
+        .module('EleBlueC')
+        .factory('Auth',Auth);
+
+    Auth.$inject = ['$firebaseAuth'];
+
+    function Auth($firebaseAuth) {
+        var ref = new Firebase("https://elebluec.firebaseio.com");
+        return $firebaseAuth(ref);
+    }
+
+})();
+
 /**
  * Created by Arnaldo on 19/10/2015.
  */
@@ -8,18 +24,21 @@
         .service('AuthService', AuthService);
 
     // Inject dependencies
-    AuthService.$inject = ['$firebaseAuth', 'sessionService', '$mdDialog', '$filter', '$location'];
+    AuthService.$inject = ['sessionService', '$mdDialog', '$filter', '$location', 'Auth'];
 
-    function AuthService($firebaseAuth, sessionService, $mdDialog, $filter, $location) {
+    function AuthService(sessionService, $mdDialog, $filter, $location, Auth) {
 
-        var ref = new Firebase('https://elebluec.firebaseio.com/');
-        var authObj = $firebaseAuth(ref);
+        var authObj = Auth;
 
         this.logInPassword = logInPassword;
         this.isLoggedIn = isLoggedIn;
         this.logInAnonymously = logInAnonymously;
         this.createUser = createUser;
         this.logOut = logOut;
+
+        authObj.$onAuth(function(authData){
+            console.log(authData);
+        });
 
 
         if (!isLoggedIn()) {
@@ -34,12 +53,6 @@
                 })
                 .then(
                 function (authData) {
-                    var users = new Firebase("https://elebluec.firebaseio.com/users/");
-                    var uid = users.child(authData.uid);
-                    var password = user.password;
-                    delete user.password;
-                    uid.set(user);
-                    user.password = password;
                     logInPassword(user);
                 },
                 function (error) {
@@ -66,10 +79,18 @@
             authObj.$unauth();
             sessionService.destroy();
             logInAnonymously();
-        };
+            $location.path("/");
+        }
 
         function isLoggedIn() {
-            return sessionService.getAuthData() !== null;
+            var authData = authObj.$getAuth();
+
+            if (authData) {
+                return authObj.$getAuth();
+            } else {
+                return null;
+            }
+
         }
 
         function logInAnonymously() {

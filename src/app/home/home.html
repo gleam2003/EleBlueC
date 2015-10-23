@@ -1,8 +1,8 @@
-<div layout="column" layout-align="center center" layout-padding ng-hide="loading">
-    <div class="ng-cloak" ng-hide="AuthService.isLoggedIn()" flex>
-        Hi stranger!
-    </div>
-    <div class="ng-cloak" ng-show="AuthService.isLoggedIn()" flex>
+<div layout="column" layout-align="center center" layout-padding flex ng-swipe-right="toggleLeft()" ng-swipe-left="toggleRight()">
+        <md-content layout="column" layout-align="center center" layout-fill ng-cloak ng-hide="AuthService.isLoggedIn()">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        </md-content>
+    <div class="ng-cloak" ng-show="AuthService.isLoggedIn()">
 
         <h1>Uid: <strong>{{ sessionService.getUid() }}</strong></h1>
 
@@ -24,18 +24,14 @@
 
         <h2>Postal Code: <strong>{{ postalCode.$value }}</strong></h2>
 
-        <h2>Device: <strong>{{ user.device }}</strong></h2>
+        <h2>Model: <strong>{{ user.device.model }}</strong></h2>
 
-        <h2>Platform: <strong>{{ user.platform }}</strong></h2>
+        <h2>Platform: <strong>{{ user.device.platform }}</strong></h2>
 
-        <h2>Version: <strong>{{ user.version }}</strong></h2>
+        <h2>Version: <strong>{{ user.device.version }}</strong></h2>
 
-        <h2>Uuid: <strong>{{ user.uuid }}</strong></h2>
+        <h2>Uuid: <strong>{{ user.device.uuid }}</strong></h2>
 
         <p><img ng-src="{{ sessionService.getAvatar() }}&s=150" class="face" ng-if="sessionService.getAvatar()"></p>
     </div>
 </div>
-
-<md-content layout="column" layout-align="center center" layout-fill ng-show="loading" ng-cloak>
-    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-</md-content>
